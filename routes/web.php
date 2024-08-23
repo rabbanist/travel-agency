@@ -14,6 +14,7 @@ Route::get('/', function () {
 Route::prefix('admin')->middleware('admin')->group( function (){
     Route::get('/dashboard',[AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/profile',[AdminDashboardController::class, 'profile'])->name('admin.profile');
+    Route::post('/profile',[AdminDashboardController::class, 'profileUpdate'])->name('admin.profile.update');
 });
 
 //Admin Authentication Routes
