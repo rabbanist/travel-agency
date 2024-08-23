@@ -9,12 +9,13 @@
                                 <h4 class="text-center">Reset Password</h4>
                             </div>
                             <div class="card-body card-body-auth">
-                                <form method="POST" action="">
+                                <form method="POST" action="{{ route('admin.reset-password.submit', ['token' => $token, 'email' => $email]) }}">
+                                    @csrf
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="" placeholder="Password" value="" autofocus>
+                                        <input type="password" class="form-control" name="password" placeholder="Password" value="" autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" name="" placeholder="Retype Password" value="">
+                                        <input type="password" class="form-control" name="confirm_password" placeholder="Retype Password" value="">
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg w_100_p">

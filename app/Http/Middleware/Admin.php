@@ -17,7 +17,7 @@ class Admin
     public function handle(Request $request, Closure $next): Response
     {
         if(!Auth::guard('admin')->check()) {
-            return redirect()->route('admin.login')->with('You are not authenticate as Admin');
+            return redirect()->route('admin.login')->with('error','You are not authenticate as Admin');
         }
         return $next($request);
     }

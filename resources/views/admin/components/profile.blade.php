@@ -11,7 +11,7 @@
                             <form action="" method="post">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <img src="uploads/user.jpg" alt="" class="profile-photo w_100_p">
+                                        <img src="{{asset('uploads/admin.jpg')}}" alt="" class="profile-photo w_100_p">
                                         <input type="file" class="mt_10" name="photo">
                                     </div>
                                     <div class="col-md-9">

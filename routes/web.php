@@ -18,8 +18,11 @@ Route::prefix('admin')->middleware('admin')->group( function (){
 
 //Admin Authentication Routes
 Route::prefix('admin')->group(function () {
-    Route::get('/login',[AdminAuthController::class, 'login'])->name('admin.login');
-    Route::post('/login',[AdminAuthController::class, 'loginSubmit'])->name('admin.login.submit');
-    Route::get('/reset-password',[AdminAuthController::class, 'resetPassword'])->name('admin.reset-password');
-    Route::get('/forget-password',[AdminAuthController::class, 'forgetPassword'])->name('admin.forget-password');
+    Route::get('/login', [AdminAuthController::class, 'login'])->name('admin.login');
+    Route::post('/login', [AdminAuthController::class, 'loginSubmit'])->name('admin.login.submit');
+    Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+    Route::get('/forget-password', [AdminAuthController::class, 'forgetPassword'])->name('admin.forget-password');
+    Route::post('/forget-password', [AdminAuthController::class, 'forgetPasswordSubmit'])->name('admin.forget-password.submit');
+    Route::get('/reset-password/{token}/{email}', [AdminAuthController::class, 'resetPassword'])->name('admin.reset-password');
+    Route::post('/reset-password/{token}/{email}', [AdminAuthController::class, 'resetPasswordSubmit'])->name('admin.reset-password.submit');
 });
