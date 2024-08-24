@@ -23,7 +23,7 @@ class AdminAuthController extends Controller
 
         $adminData = $request->all();
         $data = [
-          'email' => $adminData['email'],
+            'email' => $adminData['email'],
             'password' => $adminData['password']
         ];
 

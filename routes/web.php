@@ -2,11 +2,28 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Front\FrontendController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
+//Frontend Routes
+Route::get('/',[FrontendController::class, 'index'])->name('home');
+Route::get('/about',[FrontendController::class, 'about'])->name('about');
+Route::get('/registration',[FrontendController::class, 'registration'])->name('registration');
+Route::post('/registration',[FrontendController::class, 'registrationSubmit'])->name('registration.submit');
+Route::get('/registration-verify-email/{email}/{token}',[FrontendController::class, 'registrationVerifyEmail'])->name('registration_verify_email');
+Route::get('/login',[FrontendController::class, 'login'])->name('login');
+Route::post('/login',[FrontendController::class, 'loginSubmit'])->name('login.submit');
+Route::get('/forget-password',[FrontendController::class, 'forgetPassword'])->name('forget-password');
+Route::post('/forget-password',[FrontendController::class, 'forgetPasswordSubmit'])->name('forget-password.submit');
+Route::get('/reset-password/{token}/{email}', [FrontendController::class, 'resetPassword'])->name('reset-password');
+Route::post('/reset-password/{token}/{email}', [FrontendController::class, 'resetPasswordSubmit'])->name('reset-password.submit');
+
+//User Authentication Routes
+Route::middleware('auth')->prefix('user')->group(function () {
+    Route::get('/dashboard',[UserController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/logout',[UserController::class, 'logout'])->name('user.logout');
 });
 
 
