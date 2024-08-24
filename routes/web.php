@@ -2,13 +2,12 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Fornt\ForntendController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+//Forntend Routes
+Route::get('/',[ForntendController::class, 'index'])->name('home');
 
 //Admin
 Route::prefix('admin')->middleware('admin')->group( function (){
