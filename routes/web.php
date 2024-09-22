@@ -24,6 +24,8 @@ Route::post('/reset-password/{token}/{email}', [FrontendController::class, 'rese
 Route::middleware('auth')->prefix('user')->group(function () {
     Route::get('/dashboard',[UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/logout',[UserController::class, 'logout'])->name('user.logout');
+    Route::get('/profile',[UserController::class, 'profile'])->name('user.profile');
+    Route::post('/profile',[UserController::class, 'profileUpdate'])->name('user.profile.update');
 });
 
 

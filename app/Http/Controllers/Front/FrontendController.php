@@ -91,7 +91,7 @@ class FrontendController extends Controller
     }
 
     public function forgetPassword(){
-        return view('front.user.forget-password');
+        return view('front.pages.forget-password');
     }
 
     public function forgetPasswordSubmit(Request $request)

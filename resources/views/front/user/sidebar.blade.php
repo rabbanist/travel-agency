@@ -1,6 +1,6 @@
 <div class="card">
     <ul class="list-group list-group-flush">
-        <li class="list-group-item active">
+        <li class="list-group-item {{ Route::is('user.dashboard') ? 'active' : ''}}">
             <a href="{{route('user.dashboard')}}">Dashboard</a>
         </li>
         <li class="list-group-item">
@@ -15,8 +15,8 @@
         <li class="list-group-item">
             <a href="user-review.html">Reviews</a>
         </li>
-        <li class="list-group-item">
-            <a href="user-profile.html">Edit Profile</a>
+        <li class="list-group-item {{ Route::is('user.profile') ? 'active' : ''}}">
+            <a href="{{route('user.profile')}}">Edit Profile</a>
         </li>
         <li class="list-group-item">
             <a href="{{route('user.logout')}}">Logout</a>
