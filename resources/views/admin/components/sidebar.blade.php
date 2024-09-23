@@ -11,20 +11,9 @@
 
             <li class="{{ Request::is('admin/dashboard') ? 'active' : ''}}"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
-<<<<<<< HEAD
             <li class="{{ Request::is('admin/slider/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fas fa-hand-point-right"></i> <span>Slider</span></a></li>
-            <li class="{{ Request::is('admin/welcome-item/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.welcome-item.index') }}"><i class="fas fa-hand-point-right"></i> <span>Welcome Item</span></a></li>
+            <li class="{{ Request::is('admin/welcome-item') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.welcome-item.index') }}"><i class="fas fa-hand-point-right"></i> <span>Welcome Item</span></a></li>
 
-            {{--            <li class="nav-item dropdown active">--}}
-            {{--                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Dropdown Items</span></a>--}}
-            {{--                <ul class="dropdown-menu">--}}
-            {{--                    <li class="active"><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 1</a></li>--}}
-            {{--                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 2</a></li>--}}
-            {{--                </ul>--}}
-            {{--            </li>--}}
-
-            <li class="{{ Request::is('admin/profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.profile') }}"><i class="fas fa-hand-point-right"></i> <span>Profile</span></a></li>
-=======
 {{--            <li class="nav-item dropdown active">--}}
 {{--                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Dropdown Items</span></a>--}}
 {{--                <ul class="dropdown-menu">--}}
@@ -32,7 +21,7 @@
 {{--                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 2</a></li>--}}
 {{--                </ul>--}}
 {{--            </li>--}}
->>>>>>> 07ef9d394951424ec3975c10a8b3f515ed08570a
+
 
             <li class="{{ Request::is('admin/profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.profile') }}"><i class="fas fa-hand-point-right"></i> <span>Profile</span></a></li>
         </ul>

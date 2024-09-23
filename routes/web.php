@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminSliderController;
+use App\Http\Controllers\Admin\AdminWelcomeItemController;
 use App\Http\Controllers\Front\FrontendController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +36,20 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::get('/dashboard',[AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/profile',[AdminDashboardController::class, 'profile'])->name('admin.profile');
     Route::post('/profile',[AdminDashboardController::class, 'profileUpdate'])->name('admin.profile.update');
+    Route::get('/logout',[AdminDashboardController::class, 'logout'])->name('admin.logout');
+
+
+    //Slider Routes
+    Route::get('/slider',[AdminSliderController::class, 'index'])->name('admin.slider.index');
+    Route::get('/slider/create',[AdminSliderController::class, 'create'])->name('admin.slider.create');
+    Route::post('/slider/create',[AdminSliderController::class, 'store'])->name('admin.slider.store');
+    Route::get('/slider/edit/{id}',[AdminSliderController::class, 'edit'])->name('admin.slider.edit');
+    Route::post('/slider/edit/{id}',[AdminSliderController::class, 'update'])->name('admin.slider.update');
+    Route::get('/slider/delete/{id}',[AdminSliderController::class, 'delete'])->name('admin.slider.delete');
+
+    //Welcome Item Routes
+    Route::get('/welcome-item',[AdminWelcomeItemController::class, 'index'])->name('admin.welcome-item.index');
+    Route::post('/welcome-item/update}',[AdminWelcomeItemController::class, 'update'])->name('admin.welcome-item.update');
 });
 
 //Admin Authentication Routes
