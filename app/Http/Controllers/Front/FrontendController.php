@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Slider;
 use App\Models\User;
+use App\Models\WelcomeItem;
 use Illuminate\Http\Request;
 use App\Mail\Websitemail;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,8 @@ class FrontendController extends Controller
     public function index(){
 
         $sliders = Slider::get();
-        return view('front.pages.home', compact('sliders'));
+        $welcome_item = WelcomeItem::where('id', 1)->first();
+        return view('front.pages.home', compact('sliders','welcome_item'));
     }
 
     public function about(){

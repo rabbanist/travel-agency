@@ -11,6 +11,9 @@
 
             <li class="{{ Request::is('admin/dashboard') ? 'active' : ''}}"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
+            <li class="{{ Request::is('admin/slider/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fas fa-hand-point-right"></i> <span>Slider</span></a></li>
+            <li class="{{ Request::is('admin/welcome-item/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.welcome-item.index') }}"><i class="fas fa-hand-point-right"></i> <span>Welcome Item</span></a></li>
+
             {{--            <li class="nav-item dropdown active">--}}
             {{--                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Dropdown Items</span></a>--}}
             {{--                <ul class="dropdown-menu">--}}
@@ -20,8 +23,6 @@
             {{--            </li>--}}
 
             <li class="{{ Request::is('admin/profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.profile') }}"><i class="fas fa-hand-point-right"></i> <span>Profile</span></a></li>
-
-            <li class="{{ Request::is('admin/slider/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fas fa-hand-point-right"></i> <span>Slider</span></a></li>
 
         </ul>
     </aside>

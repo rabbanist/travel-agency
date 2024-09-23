@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminSliderController;
+use App\Http\Controllers\Admin\AdminWelcomeItemController;
 use App\Http\Controllers\Front\FrontendController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +44,10 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::get('/slider/edit/{id}',[AdminSliderController::class, 'edit'])->name('admin.slider.edit');
     Route::post('/slider/edit/{id}',[AdminSliderController::class, 'update'])->name('admin.slider.update');
     Route::get('/slider/delete/{id}',[AdminSliderController::class, 'delete'])->name('admin.slider.delete');
+
+    //Welcome, Item Routes
+    Route::get('/welcome-item',[AdminWelcomeItemController::class, 'index'])->name('admin.welcome-item.index');
+    Route::post('/welcome-item/update',[AdminWelcomeItemController::class, 'update'])->name('admin.welcome-item.update');
 });
 
 //Admin Authentication Routes
