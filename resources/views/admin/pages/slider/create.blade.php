@@ -26,23 +26,23 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label ">Title *</label>
-                                        <input type="text" class="form-control" name="title">
+                                        <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Description *</label>
-                                        <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
+                                        <textarea name="description" class="form-control" id="" cols="30" rows="10" value="{{ old('description') }}"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Button Text</label>
-                                        <input type="text" class="form-control" name="button_text">
+                                        <input type="text" class="form-control" name="button_text" value="{{ old('button_text') }}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Button Link</label>
-                                        <input type="text" class="form-control" name="button_link">
+                                        <input type="text" class="form-control" name="button_link" value="{{ old('button_link') }}">
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-label"></label>
-                                        <button type="submit" class="btn btn-primary">Update</button>
+                                        <button type="submit" class="btn btn-primary">Create</button>
                                     </div>
                                 </form>
                             </div>

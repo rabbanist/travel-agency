@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Mail\Websitemail;
@@ -13,7 +14,9 @@ use Illuminate\Support\Facades\Hash;
 class FrontendController extends Controller
 {
     public function index(){
-        return view('front.pages.home');
+
+        $sliders = Slider::get();
+        return view('front.pages.home', compact('sliders'));
     }
 
     public function about(){

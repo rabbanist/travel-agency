@@ -37,8 +37,8 @@
                                             </td>
                                             <td>{{ $slider->title }}</td>
                                             <td class="pt_10 pb_10">
-                                                <a href="" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                                <a href="" class="btn btn-danger"
+                                                <a href="{{ route('admin.slider.edit', $slider->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                <a href="{{ route('admin.slider.delete', $slider->id) }}" class="btn btn-danger"
                                                    onClick="return confirm('Are you sure?');"><i
                                                         class="fas fa-trash"></i></a>
                                             </td>

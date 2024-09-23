@@ -40,6 +40,9 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::get('/slider',[AdminSliderController::class, 'index'])->name('admin.slider.index');
     Route::get('/slider/create',[AdminSliderController::class, 'create'])->name('admin.slider.create');
     Route::post('/slider/create',[AdminSliderController::class, 'store'])->name('admin.slider.store');
+    Route::get('/slider/edit/{id}',[AdminSliderController::class, 'edit'])->name('admin.slider.edit');
+    Route::post('/slider/edit/{id}',[AdminSliderController::class, 'update'])->name('admin.slider.update');
+    Route::get('/slider/delete/{id}',[AdminSliderController::class, 'delete'])->name('admin.slider.delete');
 });
 
 //Admin Authentication Routes

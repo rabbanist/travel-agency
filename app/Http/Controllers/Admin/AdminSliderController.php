@@ -38,4 +38,49 @@ class AdminSliderController extends Controller
 
         return redirect()->route('admin.slider.index')->with('success','Slider Created Successfully');
     }
+
+    // Edit Slider
+    public function edit($id){
+        $slider = Slider::find($id);
+        return view('admin.pages.slider.edit', compact('slider'));
+    }
+
+    // Update Slider
+
+    public function update(Request $request, $id){
+
+        $slider = Slider::where('id', $id)->first();
+
+       $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        if($request->hasFile('photo')){
+            $request->validate([
+                'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            unlink(public_path('uploads/'.$slider->photo));
+            $final_name = 'slider_'.time().'.'.$request->photo->extension();
+            $request->photo->move(public_path('uploads'), $final_name);
+            $slider->photo = $final_name;
+        }
+
+        $slider->title = $request->title;
+        $slider->description = $request->description;
+        $slider->button_text = $request->button_text;
+        $slider->button_link = $request->button_link;
+        $slider->update();
+
+        return redirect()->route('admin.slider.index')->with('success','Slider Updated Successfully');
+    }
+
+    // Delete Slider
+    public function delete($id){
+        $slider = Slider::find($id);
+        unlink(public_path('uploads/'.$slider->photo));
+        $slider->delete();
+        return redirect()->route('admin.slider.index')->with('success','Slider Deleted Successfully');
+    }
 }
