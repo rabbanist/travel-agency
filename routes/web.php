@@ -2,52 +2,38 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\Admin\AdminSliderController;
-use App\Http\Controllers\Admin\AdminWelcomeItemController;
 use App\Http\Controllers\Front\FrontendController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
 
-//Frontend Routes
-Route::get('/',[FrontendController::class, 'index'])->name('home');
-Route::get('/about',[FrontendController::class, 'about'])->name('about');
-Route::get('/registration',[FrontendController::class, 'registration'])->name('registration');
-Route::post('/registration',[FrontendController::class, 'registrationSubmit'])->name('registration.submit');
-Route::get('/registration-verify-email/{email}/{token}',[FrontendController::class, 'registrationVerifyEmail'])->name('registration_verify_email');
-Route::get('/login',[FrontendController::class, 'login'])->name('login');
-Route::post('/login',[FrontendController::class, 'loginSubmit'])->name('login.submit');
-Route::get('/forget-password',[FrontendController::class, 'forgetPassword'])->name('forget-password');
-Route::post('/forget-password',[FrontendController::class, 'forgetPasswordSubmit'])->name('forget-password.submit');
+//Frontend
+Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/about', [FrontendController::class, 'about'])->name('about');
+
+//User Authentication Routes
+Route::get('/registration', [FrontendController::class, 'registration'])->name('registration');
+Route::post('/registration', [FrontendController::class, 'registrationSubmit'])->name('registration.submit');
+Route::get('/registration/verify-email/{email}/{token}', [FrontendController::class, 'verifyEmail'])->name('registration_verify_email');
+Route::get('/login', [FrontendController::class, 'login'])->name('login');
+Route::post('/login', [FrontendController::class, 'loginSubmit'])->name('login.submit');
+Route::get('/forget-password', [FrontendController::class, 'forgetPassword'])->name('forget-password');
+Route::post('/forget-password', [FrontendController::class, 'forgetPasswordSubmit'])->name('forget-password.submit');
 Route::get('/reset-password/{token}/{email}', [FrontendController::class, 'resetPassword'])->name('reset-password');
 Route::post('/reset-password/{token}/{email}', [FrontendController::class, 'resetPasswordSubmit'])->name('reset-password.submit');
 
-//User Authentication Routes
+//User Profile Routes
 Route::middleware('auth')->prefix('user')->group(function () {
-    Route::get('/dashboard',[UserController::class, 'dashboard'])->name('user.dashboard');
-    Route::get('/logout',[UserController::class, 'logout'])->name('user.logout');
-    Route::get('/profile',[UserController::class, 'profile'])->name('user.profile');
-    Route::post('/profile',[UserController::class, 'profileUpdate'])->name('user.profile.update');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/profile', [UserController::class, 'profileUpdate'])->name('user.profile.update');
+    Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
 });
-
-
 //Admin
 Route::prefix('admin')->middleware('admin')->group( function (){
     Route::get('/dashboard',[AdminDashboardController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/profile',[AdminDashboardController::class, 'profile'])->name('admin.profile');
     Route::post('/profile',[AdminDashboardController::class, 'profileUpdate'])->name('admin.profile.update');
-
-    //Slider Routes
-    Route::get('/slider',[AdminSliderController::class, 'index'])->name('admin.slider.index');
-    Route::get('/slider/create',[AdminSliderController::class, 'create'])->name('admin.slider.create');
-    Route::post('/slider/create',[AdminSliderController::class, 'store'])->name('admin.slider.store');
-    Route::get('/slider/edit/{id}',[AdminSliderController::class, 'edit'])->name('admin.slider.edit');
-    Route::post('/slider/edit/{id}',[AdminSliderController::class, 'update'])->name('admin.slider.update');
-    Route::get('/slider/delete/{id}',[AdminSliderController::class, 'delete'])->name('admin.slider.delete');
-
-    //Welcome, Item Routes
-    Route::get('/welcome-item',[AdminWelcomeItemController::class, 'index'])->name('admin.welcome-item.index');
-    Route::post('/welcome-item/update',[AdminWelcomeItemController::class, 'update'])->name('admin.welcome-item.update');
 });
 
 //Admin Authentication Routes
