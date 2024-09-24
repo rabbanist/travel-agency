@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminCounterItemController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminSliderController;
@@ -60,6 +61,9 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::post('/feature/edit/{id}',[AdminFeatureController::class, 'update'])->name('admin.feature.update');
     Route::get('/feature/delete/{id}',[AdminFeatureController::class, 'delete'])->name('admin.feature.delete');
 
+    //Counter Item Routes
+    Route::get('/counter-item',[AdminCounterItemController::class, 'index'])->name('admin.counter-item.index');
+    Route::post('/counter-item/update',[AdminCounterItemController::class, 'update'])->name('admin.counter-item.update');
 });
 
 //Admin Authentication Routes

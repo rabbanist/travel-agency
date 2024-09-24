@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 //        ]);
 
         $this->call([
-            WelcomeItemSeeder::class,
+            CounterItemSeeder::class,
         ]);
 
 
