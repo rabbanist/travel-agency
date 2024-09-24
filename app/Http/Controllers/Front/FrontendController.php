@@ -25,7 +25,8 @@ class FrontendController extends Controller
 
     public function about(){
         $welcome_item = WelcomeItem::where('id', 1)->first();
-        return view('front.pages.about', compact('welcome_item'));
+        $features = Feature::get();
+        return view('front.pages.about', compact('welcome_item','features'));
     }
 
     public function registration(){
