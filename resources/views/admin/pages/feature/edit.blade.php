@@ -10,7 +10,7 @@
             <div class="section-header justify-content-between ">
                 <h1>Update Slider</h1>
                 <div class="ml-auto">
-                    <a href="{{ route('admin.slider.index') }}" class="btn btn-primary">Show All</a>
+                    <a href="{{ route('admin.feature.index') }}" class="btn btn-primary">Show All</a>
                 </div>
             </div>
             <div class="section-body">
@@ -18,35 +18,28 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.slider.update', $slider->id) }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('admin.feature.update', $feature->id) }}" method="post">
                                     @csrf
 
                                     <div class="mb-3">
-                                        <label class="form-label">Existing Photo *</label>
+                                        <label class="form-label ">Existing Icon *</label>
                                         <div>
-                                            <img src="{{ asset('uploads/'.$slider->photo) }}" alt="" class="w_100">
+                                            <i class="{{ $feature->icon }} fz_50"></i>
                                         </div>
+
                                     </div>
 
                                     <div class="mb-3">
-                                        <label class="form-label">Photo *</label>
-                                        <input type="file" class="form-control" name="photo">
+                                        <label class="form-label">Icon *</label>
+                                        <input type="text" class="form-control" name="icon" value="{{ $feature->icon }}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label ">Title *</label>
-                                        <input type="text" class="form-control" name="title" value="{{ $slider->title }}">
+                                        <input type="text" class="form-control" name="title" value="{{ $feature->title }}">
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Description *</label>
-                                        <textarea name="description" class="form-control editor" id="" cols="30" rows="10">{{ $slider->description }}</textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Button Text</label>
-                                        <input type="text" class="form-control" name="button_text" value="{{ $slider->button_text }}">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Button Link</label>
-                                        <input type="text" class="form-control" name="button_link" value="{{ $slider->button_link }}">
+                                        <textarea name="description" class="form-control editor" id="" cols="30" rows="10">{{ $feature->description }}</textarea>
                                     </div>
                                     <div class="mb-4">
                                         <label class="form-label"></label>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Feature;
 use App\Models\Slider;
 use App\Models\User;
 use App\Models\WelcomeItem;
@@ -18,7 +19,8 @@ class FrontendController extends Controller
 
         $sliders = Slider::get();
         $welcome_item = WelcomeItem::where('id', 1)->first();
-        return view('front.pages.home', compact('sliders','welcome_item'));
+        $features = Feature::get();
+        return view('front.pages.home', compact('sliders','welcome_item','features'));
     }
 
     public function about(){

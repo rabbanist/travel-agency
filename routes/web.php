@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\Admin\AdminWelcomeItemController;
 use App\Http\Controllers\Front\FrontendController;
@@ -50,6 +51,15 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     //Welcome Item Routes
     Route::get('/welcome-item',[AdminWelcomeItemController::class, 'index'])->name('admin.welcome-item.index');
     Route::post('/welcome-item/update}',[AdminWelcomeItemController::class, 'update'])->name('admin.welcome-item.update');
+
+    //Feature Routes
+    Route::get('/feature',[AdminFeatureController::class, 'index'])->name('admin.feature.index');
+    Route::get('/feature/create',[AdminFeatureController::class, 'create'])->name('admin.feature.create');
+    Route::post('/feature/create',[AdminFeatureController::class, 'store'])->name('admin.feature.store');
+    Route::get('/feature/edit/{id}',[AdminFeatureController::class, 'edit'])->name('admin.feature.edit');
+    Route::post('/feature/edit/{id}',[AdminFeatureController::class, 'update'])->name('admin.feature.update');
+    Route::get('/feature/delete/{id}',[AdminFeatureController::class, 'delete'])->name('admin.feature.delete');
+
 });
 
 //Admin Authentication Routes
