@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\CounterItem;
 use App\Models\Feature;
 use App\Models\Slider;
 use App\Models\User;
@@ -26,7 +27,8 @@ class FrontendController extends Controller
     public function about(){
         $welcome_item = WelcomeItem::where('id', 1)->first();
         $features = Feature::get();
-        return view('front.pages.about', compact('welcome_item','features'));
+        $counter_item = CounterItem::where('id', 1)->first();
+        return view('front.pages.about', compact('welcome_item','features','counter_item'));
     }
 
     public function registration(){
