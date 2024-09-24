@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Description *</label>
-                                        <textarea name="description" class="form-control" id="" cols="30" rows="10">{{ $slider->description }}</textarea>
+                                        <textarea name="description" class="form-control editor" id="" cols="30" rows="10">{{ $slider->description }}</textarea>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Button Text</label>
