@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\Admin\AdminWelcomeItemController;
+use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Front\FrontendController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +65,15 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     //Counter Item Routes
     Route::get('/counter-item',[AdminCounterItemController::class, 'index'])->name('admin.counter-item.index');
     Route::post('/counter-item/update',[AdminCounterItemController::class, 'update'])->name('admin.counter-item.update');
+
+    //Testimonial Routes
+    Route::get('/testimonial',[AdminTestimonialController::class, 'index'])->name('admin.testimonial.index');
+    Route::get('/testimonial/create',[AdminTestimonialController::class, 'create'])->name('admin.testimonial.create');
+    Route::post('/testimonial/create',[AdminTestimonialController::class, 'store'])->name('admin.testimonial.store');
+    Route::get('/testimonial/edit/{id}',[AdminTestimonialController::class, 'edit'])->name('admin.testimonial.edit');
+    Route::post('/testimonial/edit/{id}',[AdminTestimonialController::class, 'update'])->name('admin.testimonial.update');
+    Route::get('/testimonial/delete/{id}',[AdminTestimonialController::class, 'delete'])->name('admin.testimonial.delete');
+
 });
 
 //Admin Authentication Routes

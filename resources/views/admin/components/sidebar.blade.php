@@ -11,21 +11,21 @@
 
             <li class="{{ Request::is('admin/dashboard') ? 'active' : ''}}"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-hand-point-right"></i> <span>Dashboard</span></a></li>
 
-            <li class="{{ Request::is('admin/slider/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fas fa-hand-point-right"></i> <span>Slider</span></a></li>
+            <li class="{{ Request::is('admin/slider') || Request::is('admin/slider/*') ? 'active' :  ''}}">
+                <a class="nav-link" href="{{ route('admin.slider.index') }}">
+                    <i class="fas fa-hand-point-right"></i> <span>Slider</span>
+                </a>
+            </li>
 
-            <li class="{{ Request::is('admin/welcome-item') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.welcome-item.index') }}"><i class="fas fa-hand-point-right"></i> <span>Welcome Item</span></a></li>
+            <li class="{{ Request::is('admin/welcome-item') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('admin.welcome-item.index') }}">
+                    <i class="fas fa-hand-point-right"></i> <span>Welcome Item</span></a>
+            </li>
 
-            <li class="{{ Request::is('admin/feature/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.feature.index') }}"><i class="fas fa-hand-point-right"></i> <span>Feature</span></a></li>
+            <li class="{{ Request::is('admin/feature') || Request::is('admin/feature/*') ? 'active' :  ''}}"><a class="nav-link" href="{{ route('admin.feature.index') }}"><i class="fas fa-hand-point-right"></i> <span>Feature</span></a></li>
+            <li class="{{ Request::is('admin/testimonial') || Request::is('admin/testimonial/*') ? 'active' :  ''}}"><a class="nav-link" href="{{ route('admin.testimonial.index') }}"><i class="fas fa-hand-point-right"></i> <span>Testimonial</span></a></li>
 
             <li class="{{ Request::is('admin/counter-item') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.counter-item.index') }}"><i class="fas fa-hand-point-right"></i> <span>Counter Item</span></a></li>
-
-            {{--            <li class="nav-item dropdown active">--}}
-{{--                <a href="#" class="nav-link has-dropdown"><i class="fas fa-hand-point-right"></i><span>Dropdown Items</span></a>--}}
-{{--                <ul class="dropdown-menu">--}}
-{{--                    <li class="active"><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 1</a></li>--}}
-{{--                    <li class=""><a class="nav-link" href=""><i class="fas fa-angle-right"></i> Item 2</a></li>--}}
-{{--                </ul>--}}
-{{--            </li>--}}
 
 
             <li class="{{ Request::is('admin/profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.profile') }}"><i class="fas fa-hand-point-right"></i> <span>Profile</span></a></li>
