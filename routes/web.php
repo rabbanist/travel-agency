@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 //Frontend
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
+Route::get('/team', [FrontendController::class, 'team_members'])->name('team');
+Route::get('/team-member/{id}', [FrontendController::class, 'team_member'])->name('team.member');
 
 //User Authentication Routes
 Route::get('/registration', [FrontendController::class, 'registration'])->name('registration');

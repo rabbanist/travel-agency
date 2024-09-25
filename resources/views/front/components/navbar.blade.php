@@ -51,8 +51,8 @@
                         <li class="nav-item">
                             <a href="packages.html" class="nav-link">Packages</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="team-members.html" class="nav-link">Team</a>
+                        <li class="nav-item {{ Route::is('team') ? 'active' : '' }}">
+                            <a href="{{ route('team') }}" class="nav-link">Team</a>
                         </li>
                         <li class="nav-item">
                             <a href="faq.html" class="nav-link">FAQ</a>

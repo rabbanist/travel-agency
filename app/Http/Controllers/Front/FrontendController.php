@@ -33,6 +33,16 @@ class FrontendController extends Controller
         return view('front.pages.about', compact('welcome_item','features','counter_item'));
     }
 
+    public function team_members(){
+        $team_members = TeamMember::get();
+        return view('front.pages.team-members', compact('team_members'));
+    }
+
+    public function team_member($slug){
+        $team_member = TeamMember::where('slug',$slug)->first();
+        return view('front.pages.team-member', compact('team_member'));
+    }
+
     public function registration(){
         return view('front.pages.register');
     }
