@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\Admin\AdminWelcomeItemController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
+use App\Http\Controllers\Admin\AdminTeamMemberController;
 use App\Http\Controllers\Front\FrontendController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +74,14 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::get('/testimonial/edit/{id}',[AdminTestimonialController::class, 'edit'])->name('admin.testimonial.edit');
     Route::post('/testimonial/edit/{id}',[AdminTestimonialController::class, 'update'])->name('admin.testimonial.update');
     Route::get('/testimonial/delete/{id}',[AdminTestimonialController::class, 'delete'])->name('admin.testimonial.delete');
+
+    //Team Member Routes
+    Route::get('/team-member',[AdminTeamMemberController::class, 'index'])->name('admin.team_member.index');
+    Route::get('/team-member/create',[AdminTeamMemberController::class, 'create'])->name('admin.team_member.create');
+    Route::post('/team-member/create',[AdminTeamMemberController::class, 'store'])->name('admin.team_member.store');
+    Route::get('/team-member/edit/{id}',[AdminTeamMemberController::class, 'edit'])->name('admin.team_member.edit');
+    Route::post('/team-member/edit/{id}',[AdminTeamMemberController::class, 'update'])->name('admin.team_member.update');
+    Route::get('/team-member/delete/{id}',[AdminTeamMemberController::class, 'delete'])->name('admin.team_member.delete');
 
 });
 

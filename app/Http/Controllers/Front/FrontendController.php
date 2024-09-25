@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\CounterItem;
 use App\Models\Feature;
 use App\Models\Slider;
+use App\Models\TeamMember;
 use App\Models\User;
 use App\Models\WelcomeItem;
 use Illuminate\Http\Request;
@@ -21,7 +22,8 @@ class FrontendController extends Controller
         $sliders = Slider::get();
         $welcome_item = WelcomeItem::where('id', 1)->first();
         $features = Feature::get();
-        return view('front.pages.home', compact('sliders','welcome_item','features'));
+        $team_members = TeamMember::get();
+        return view('front.pages.home', compact('sliders','welcome_item','features', 'team_members'));
     }
 
     public function about(){
