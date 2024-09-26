@@ -34,7 +34,7 @@ class FrontendController extends Controller
     }
 
     public function team_members(){
-        $team_members = TeamMember::get();
+        $team_members = TeamMember::paginate(20);
         return view('front.pages.team-members', compact('team_members'));
     }
 
