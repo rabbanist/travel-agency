@@ -27,8 +27,10 @@
 
             <li class="{{ Request::is('admin/team-member') || Request::is('admin/team-member/*') ? 'active' :  ''}}"><a class="nav-link" href="{{ route('admin.team_member.index') }}"><i class="fas fa-hand-point-right"></i> <span>Team Member</span></a></li>
 
-            <li class="{{ Request::is('admin/counter-item') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.counter-item.index') }}"><i class="fas fa-hand-point-right"></i> <span>Counter Item</span></a></li>
+            <li class="{{ Request::is('admin/faq') || Request::is('admin/faq/*') ? 'active' :  ''}}"><a class="nav-link" href="{{ route('admin.faq.index') }}"><i class="fas fa-hand-point-right"></i> <span>FAQ</span></a></li>
 
+
+            <li class="{{ Request::is('admin/counter-item') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.counter-item.index') }}"><i class="fas fa-hand-point-right"></i> <span>Counter Item</span></a></li>
 
             <li class="{{ Request::is('admin/profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.profile') }}"><i class="fas fa-hand-point-right"></i> <span>Profile</span></a></li>
         </ul>

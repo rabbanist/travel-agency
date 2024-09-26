@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\CounterItem;
+use App\Models\Faq;
 use App\Models\Feature;
 use App\Models\Slider;
 use App\Models\TeamMember;
@@ -41,6 +42,11 @@ class FrontendController extends Controller
     public function team_member($slug){
         $team_member = TeamMember::where('slug',$slug)->first();
         return view('front.pages.team-member', compact('team_member'));
+    }
+
+    public function faq(){
+        $faqs = Faq::get();
+        return view('front.pages.faq', compact('faqs'));
     }
 
     public function registration(){

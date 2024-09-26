@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminCounterItemController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\Admin\AdminWelcomeItemController;
@@ -17,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/team', [FrontendController::class, 'team_members'])->name('team');
-Route::get('/team-member/{id}', [FrontendController::class, 'team_member'])->name('team.member');
+Route::get('/team-member/{slug}', [FrontendController::class, 'team_member'])->name('team.member');
+Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
+
 
 //User Authentication Routes
 Route::get('/registration', [FrontendController::class, 'registration'])->name('registration');
@@ -84,6 +87,14 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::get('/team-member/edit/{id}',[AdminTeamMemberController::class, 'edit'])->name('admin.team_member.edit');
     Route::post('/team-member/edit/{id}',[AdminTeamMemberController::class, 'update'])->name('admin.team_member.update');
     Route::get('/team-member/delete/{id}',[AdminTeamMemberController::class, 'delete'])->name('admin.team_member.delete');
+
+    //FAQ Routes
+    Route::get('/faq',[AdminFaqController::class, 'index'])->name('admin.faq.index');
+    Route::get('/faq/create',[AdminFaqController::class, 'create'])->name('admin.faq.create');
+    Route::post('/faq/create',[AdminFaqController::class, 'store'])->name('admin.faq.store');
+    Route::get('/faq/edit/{id}',[AdminFaqController::class, 'edit'])->name('admin.faq.edit');
+    Route::post('/faq/edit/{id}',[AdminFaqController::class, 'update'])->name('admin.faq.update');
+    Route::get('/faq/delete/{id}',[AdminFaqController::class, 'delete'])->name('admin.faq.delete');
 
 });
 
