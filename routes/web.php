@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminCounterItemController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
+use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\Admin\AdminWelcomeItemController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
@@ -104,6 +105,16 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::get('/blog-category/edit/{id}',[AdminBlogCategoryController::class, 'edit'])->name('admin.blog_category.edit');
     Route::post('/blog-category/edit/{id}',[AdminBlogCategoryController::class, 'update'])->name('admin.blog_category.update');
     Route::get('/blog-category/delete/{id}',[AdminBlogCategoryController::class, 'delete'])->name('admin.blog_category.delete');
+
+    //Post Routes
+    Route::get('/post',[AdminPostController::class, 'index'])->name('admin.post.index');
+    Route::get('/post/create',[AdminPostController::class, 'create'])->name('admin.post.create');
+    Route::post('/post/create',[AdminPostController::class, 'store'])->name('admin.post.store');
+    Route::get('/post/edit/{id}',[AdminPostController::class, 'edit'])->name('admin.post.edit');
+    Route::post('/post/edit/{id}',[AdminPostController::class, 'update'])->name('admin.post.update');
+    Route::get('/post/delete/{id}',[AdminPostController::class, 'delete'])->name('admin.post.delete');
+
+
 
 
 });
