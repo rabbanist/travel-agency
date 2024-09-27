@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\BlogCategory;
 use App\Models\CounterItem;
 use App\Models\Faq;
 use App\Models\Feature;
+use App\Models\Post;
 use App\Models\Slider;
 use App\Models\TeamMember;
 use App\Models\User;
@@ -47,6 +49,20 @@ class FrontendController extends Controller
     public function faq(){
         $faqs = Faq::get();
         return view('front.pages.faq', compact('faqs'));
+    }
+
+    // Blog Page Function
+    public function blog(){
+        $posts = Post::with('blog_category')->orderBy('id','desc')->paginate(9);
+        return view('front.pages.blog', compact('posts'));
+    }
+
+    public function post($slug)
+    {
+        $categories = BlogCategory::orderBy('name','asc')->get();
+        $post = Post::with('blog_category')->where('slug',$slug)->first();
+        $latest_posts = Post::with('blog_category')->orderBy('id','desc')->get()->take(5);
+        return view('front.pages.post', compact('post', 'categories', 'latest_posts'));
     }
 
     public function registration(){

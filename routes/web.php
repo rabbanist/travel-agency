@@ -22,6 +22,9 @@ Route::get('/about', [FrontendController::class, 'about'])->name('about');
 Route::get('/team', [FrontendController::class, 'team_members'])->name('team');
 Route::get('/team-member/{slug}', [FrontendController::class, 'team_member'])->name('team.member');
 Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
+Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
+Route::get('/post/{slug}', [FrontendController::class, 'post'])->name('post');
+Route::get('/category/{slug}',[FrontendController::class,'category'])->name('category');
 
 
 //User Authentication Routes
