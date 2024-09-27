@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminBlogCategoryController;
 use App\Http\Controllers\Admin\AdminCounterItemController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminFaqController;
@@ -95,6 +96,15 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::get('/faq/edit/{id}',[AdminFaqController::class, 'edit'])->name('admin.faq.edit');
     Route::post('/faq/edit/{id}',[AdminFaqController::class, 'update'])->name('admin.faq.update');
     Route::get('/faq/delete/{id}',[AdminFaqController::class, 'delete'])->name('admin.faq.delete');
+
+    //Blog Category Routes
+    Route::get('/blog-category',[AdminBlogCategoryController::class, 'index'])->name('admin.blog_category.index');
+    Route::get('/blog-category/create',[AdminBlogCategoryController::class, 'create'])->name('admin.blog_category.create');
+    Route::post('/blog-category/create',[AdminBlogCategoryController::class, 'store'])->name('admin.blog_category.store');
+    Route::get('/blog-category/edit/{id}',[AdminBlogCategoryController::class, 'edit'])->name('admin.blog_category.edit');
+    Route::post('/blog-category/edit/{id}',[AdminBlogCategoryController::class, 'update'])->name('admin.blog_category.update');
+    Route::get('/blog-category/delete/{id}',[AdminBlogCategoryController::class, 'delete'])->name('admin.blog_category.delete');
+
 
 });
 
