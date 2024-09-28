@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogCategory;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class AdminBlogCategoryController extends Controller
@@ -51,6 +52,10 @@ class AdminBlogCategoryController extends Controller
     }
 
     public function delete($id){
+        $total = Post::where('blog_category_id', $id)->count();
+        if($total > 0){
+            return back()->with('error', 'This category has posts. So, you can not delete this category');
+        }
         BlogCategory::where('id', $id)->first()->delete();
         return redirect()->route('admin.blog_category.index')->with('success', 'Blog Category Deleted Successfully');
     }

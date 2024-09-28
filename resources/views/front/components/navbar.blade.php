@@ -58,7 +58,7 @@
                         <li class="nav-item {{ Route::is('faq') ? 'active' : '' }}">
                             <a href="{{ route('faq') }}" class="nav-link">FAQ</a>
                         </li>
-                        <li class="nav-item {{ Route::is('faq') ? 'active' : '' }}">
+                        <li class="nav-item {{ Route::is('blog') || Route::is('post') ? 'active' : '' }}">
                             <a href="{{ route('blog') }}" class="nav-link">Blog</a>
                         </li>
 

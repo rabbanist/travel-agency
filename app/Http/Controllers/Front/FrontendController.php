@@ -26,7 +26,8 @@ class FrontendController extends Controller
         $welcome_item = WelcomeItem::where('id', 1)->first();
         $features = Feature::get();
         $team_members = TeamMember::get();
-        return view('front.pages.home', compact('sliders','welcome_item','features', 'team_members'));
+        $posts = Post::with('blog_category')->orderBy('id','desc')->get()->take(3);
+        return view('front.pages.home', compact('sliders','welcome_item','features', 'team_members','posts'));
     }
 
     public function about(){
@@ -63,6 +64,13 @@ class FrontendController extends Controller
         $post = Post::with('blog_category')->where('slug',$slug)->first();
         $latest_posts = Post::with('blog_category')->orderBy('id','desc')->get()->take(5);
         return view('front.pages.post', compact('post', 'categories', 'latest_posts'));
+    }
+
+    public function category($slug)
+    {
+        $category = BlogCategory::where('slug',$slug)->first();
+        $posts = Post::with('blog_category')->where('blog_category_id',$category->id)->orderBy('id','desc')->paginate(9);
+        return view('front.pages.category', compact('posts', 'category'));
     }
 
     public function registration(){
