@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminBlogCategoryController;
 use App\Http\Controllers\Admin\AdminCounterItemController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminDestinationController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminPostController;
@@ -117,6 +118,14 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::post('/post/edit/{id}',[AdminPostController::class, 'update'])->name('admin.post.update');
     Route::get('/post/delete/{id}',[AdminPostController::class, 'delete'])->name('admin.post.delete');
 
+
+    //Destination Routes
+    Route::get('/destination',[AdminDestinationController::class, 'index'])->name('admin.destination.index');
+    Route::get('/destination/create',[AdminDestinationController::class, 'create'])->name('admin.destination.create');
+    Route::post('/destination/create',[AdminDestinationController::class, 'store'])->name('admin.destination.store');
+    Route::get('/destination/edit/{id}',[AdminDestinationController::class, 'edit'])->name('admin.destination.edit');
+    Route::post('/destination/edit/{id}',[AdminDestinationController::class, 'update'])->name('admin.destination.update');
+    Route::get('/destination/delete/{id}',[AdminDestinationController::class, 'delete'])->name('admin.destination.delete');
 
 
 
