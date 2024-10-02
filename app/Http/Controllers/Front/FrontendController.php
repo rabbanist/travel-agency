@@ -12,6 +12,7 @@ use App\Models\Post;
 use App\Models\Slider;
 use App\Models\TeamMember;
 use App\Models\User;
+use App\Models\Destination;
 use App\Models\WelcomeItem;
 use Illuminate\Http\Request;
 use App\Mail\Websitemail;
@@ -21,13 +22,13 @@ use Illuminate\Support\Facades\Hash;
 class FrontendController extends Controller
 {
     public function index(){
-
         $sliders = Slider::get();
         $welcome_item = WelcomeItem::where('id', 1)->first();
         $features = Feature::get();
         $team_members = TeamMember::get();
         $posts = Post::with('blog_category')->orderBy('id','desc')->get()->take(3);
-        return view('front.pages.home', compact('sliders','welcome_item','features', 'team_members','posts'));
+        $destinations = Destination::orderBy('view_count','desc')->get()->take(8);
+        return view('front.pages.home', compact('sliders','welcome_item','features', 'team_members','posts','destinations'));
     }
 
     public function about(){
@@ -64,6 +65,20 @@ class FrontendController extends Controller
         $post = Post::with('blog_category')->where('slug',$slug)->first();
         $latest_posts = Post::with('blog_category')->orderBy('id','desc')->get()->take(5);
         return view('front.pages.post', compact('post', 'categories', 'latest_posts'));
+    }
+
+    public function destinations()
+    {
+        $destinations = Destination::orderBy('id','asc')->paginate(20);
+        return view('front.pages.destinations', compact('destinations'));
+    }
+
+    public function destination($slug)
+    {
+        $destination = Destination::where('slug',$slug)->first();
+        $destination->view_count = $destination->view_count + 1;
+        $destination->update();
+        return view('front.pages.destination', compact('destination'));
     }
 
     public function category($slug)

@@ -66,19 +66,21 @@
                                                 <input type="text" class="form-control" name="currency" value="{{ $destination->currency }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Language</label>
                                                 <input type="text" class="form-control" name="language" value="{{ $destination->language }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Timezone</label>
                                                 <input type="text" class="form-control" name="timezone" value="{{ $destination->timezone }}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Area</label>
                                                 <input type="text" class="form-control" name="area" value="{{ $destination->area }}">

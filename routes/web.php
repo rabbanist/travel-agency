@@ -26,6 +26,8 @@ Route::get('/faq', [FrontendController::class, 'faq'])->name('faq');
 Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
 Route::get('/post/{slug}', [FrontendController::class, 'post'])->name('post');
 Route::get('/category/{slug}',[FrontendController::class,'category'])->name('category');
+Route::get('/destinations', [FrontendController::class, 'destinations'])->name('destinations');
+Route::get('/destination/{slug}', [FrontendController::class, 'destination'])->name('destination');
 
 
 //User Authentication Routes
