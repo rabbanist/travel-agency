@@ -129,6 +129,16 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::post('/destination/edit/{id}',[AdminDestinationController::class, 'update'])->name('admin.destination.update');
     Route::get('/destination/delete/{id}',[AdminDestinationController::class, 'delete'])->name('admin.destination.delete');
 
+    //Destination Photo Routes
+    Route::get('/destination-photo/{id}',[AdminDestinationController::class, 'destinationPhotos'])->name('admin.destination_photo');
+    Route::post('/destination-photo/{id}',[AdminDestinationController::class, 'destinationPhotosStore'])->name('admin.destination_photo.store');
+    Route::get('/destination-photo/delete/{id}',[AdminDestinationController::class, 'destinationPhotosDelete'])->name('admin.destination_photo.delete');
+
+    //Destination Video Routes
+    Route::get('/destination-video/{id}',[AdminDestinationController::class, 'destinationVideos'])->name('admin.destination_video');
+    Route::post('/destination-video/{id}',[AdminDestinationController::class, 'destinationVideoStore'])->name('admin.destination_video.store');
+    Route::get('/destination-video/delete/{id}',[AdminDestinationController::class, 'destinationVideoDelete'])->name('admin.destination_video.delete');
+
 
 
 });

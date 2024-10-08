@@ -25,6 +25,7 @@
                                             <th>SL</th>
                                             <th>Photo</th>
                                             <th>Name</th>
+                                            <th>Gallery</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -36,6 +37,10 @@
                                                     <img src="{{ asset('uploads/'.$destination->featured_image) }}" alt="" class="w_100">
                                                 </td>
                                                 <td>{{ $destination->name }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.destination_photo',$destination->id) }}" class="btn btn-success btn-sm">Photo Gallery</a>
+                                                    <a href="{{ route('admin.destination_video',$destination->id) }}" class="btn btn-success btn-sm">Video Gallery</a>
+                                                </td>
                                                 <td class="pt_10 pb_10">
                                                     <a href="{{ route('admin.destination.edit', $destination->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                                     <a href="{{ route('admin.destination.delete', $destination->id) }}" class="btn btn-danger"

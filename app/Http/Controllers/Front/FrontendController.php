@@ -13,6 +13,8 @@ use App\Models\Slider;
 use App\Models\TeamMember;
 use App\Models\User;
 use App\Models\Destination;
+use App\Models\DestinationPhoto;
+use App\Models\DestinationVideo;
 use App\Models\WelcomeItem;
 use Illuminate\Http\Request;
 use App\Mail\Websitemail;
@@ -78,7 +80,11 @@ class FrontendController extends Controller
         $destination = Destination::where('slug',$slug)->first();
         $destination->view_count = $destination->view_count + 1;
         $destination->update();
-        return view('front.pages.destination', compact('destination'));
+
+        $destination_photos = DestinationPhoto::where('destination_id',$destination->id)->get();
+        $destination_videos = DestinationVideo::where('destination_id',$destination->id)->get();
+
+        return view('front.pages.destination', compact('destination', 'destination_photos', 'destination_videos',));
     }
 
     public function category($slug)
