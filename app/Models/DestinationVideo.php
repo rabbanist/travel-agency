@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class DestinationVideo extends Model
 {
     use HasFactory;
+
+    public function destination()
+    {
+        return $this->belongsTo(Destination::class);
+    }
 }

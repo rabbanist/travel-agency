@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\AdminDestinationController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
+use App\Http\Controllers\Admin\AdminPackageController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminSliderController;
 use App\Http\Controllers\Admin\AdminWelcomeItemController;
@@ -139,6 +140,13 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::post('/destination-video/{id}',[AdminDestinationController::class, 'destinationVideoStore'])->name('admin.destination_video.store');
     Route::get('/destination-video/delete/{id}',[AdminDestinationController::class, 'destinationVideoDelete'])->name('admin.destination_video.delete');
 
+    //Package Routes
+    Route::get('/package',[AdminPackageController::class, 'index'])->name('admin.package.index');
+    Route::get('/package/create',[AdminPackageController::class, 'create'])->name('admin.package.create');
+    Route::post('/package/create',[AdminPackageController::class, 'store'])->name('admin.package.store');
+    Route::get('/package/edit/{id}',[AdminPackageController::class, 'edit'])->name('admin.package.edit');
+    Route::post('/package/edit/{id}',[AdminPackageController::class, 'update'])->name('admin.package.update');
+    Route::get('/package/delete/{id}',[AdminPackageController::class, 'delete'])->name('admin.package.delete');
 
 
 });

@@ -38,6 +38,7 @@
             </li>
 
             <li class="{{ Request::is('admin/destination') || Request::is('admin/destination/*') ? 'active' :  ''}}"><a class="nav-link" href="{{ route('admin.destination.index') }}"><i class="fas fa-hand-point-right"></i> <span>Destination</span></a></li>
+            <li class="{{ Request::is('admin/package') || Request::is('admin/package/*') ? 'active' :  ''}}"><a class="nav-link" href="{{ route('admin.package.index') }}"><i class="fas fa-hand-point-right"></i> <span>Package</span></a></li>
 
 
             <li class="{{ Request::is('admin/counter-item') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.counter-item.index') }}"><i class="fas fa-hand-point-right"></i> <span>Counter Item</span></a></li>
