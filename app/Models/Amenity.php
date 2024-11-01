@@ -10,4 +10,9 @@ class Amenity extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+   public function package_amenities()
+    {
+        return $this->hasMany(PackageAmenity::class);
+    }
 }

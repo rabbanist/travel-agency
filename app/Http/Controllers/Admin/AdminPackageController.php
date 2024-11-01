@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Amenity;
+use App\Models\PackageAmenity;
 use Illuminate\Http\Request;
 use App\Models\Package;
 use App\Models\Destination;
@@ -118,4 +120,54 @@ class AdminPackageController extends Controller
         $package->delete();
         return redirect()->route('admin.package.index')->with('success','Package is Deleted Successfully');
     }
+
+
+
+    //package amenities start
+
+    public function packageAmenities($id)
+    {
+        $package = Package::where('id',$id)->first();
+
+        $package_amenities_include = PackageAmenity::with('amenity')
+            ->orWhere('package_id', $id)
+            ->where('type', 'included')
+            ->get();
+
+        $package_amenities_exclude = PackageAmenity::with('amenity')
+            ->where('package_id', $id)
+            ->where('type', 'excluded')
+            ->get();
+        $amenities = Amenity::orderBy('name','asc')->get();
+        return view('admin.pages.package.package_amenity',compact('package','package_amenities_include','package_amenities_exclude','amenities'));
+    }
+
+    public function packageAmenitiesStore(Request $request, $id)
+    {
+        $request->validate([
+            'amenity_id' => 'required|unique:package_amenities',
+            'type' => 'required',
+        ]);
+
+        $obj = new PackageAmenity();
+        $obj->package_id = $id;
+        $obj->amenity_id = $request->amenity_id;
+        $obj->type = $request->type;
+        $obj->save();
+
+        return redirect()->route('admin.package_amenity',$id)->with('success','Amenity is Added Successfully');
+    }
+
+
+    //package amenities delete
+    public function packageAmenitiesDelete($id)
+    {
+        $package_amenity = PackageAmenity::where('id',$id)->first();
+        $package_id = $package_amenity->package_id;
+        $package_amenity->delete();
+        return redirect()->route('admin.package_amenity',$package_id)->with('success','Amenity is Deleted Successfully');
+    }
+
+
+
 }

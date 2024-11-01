@@ -150,6 +150,12 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::post('/package/edit/{id}',[AdminPackageController::class, 'update'])->name('admin.package.update');
     Route::get('/package/delete/{id}',[AdminPackageController::class, 'delete'])->name('admin.package.delete');
 
+    //Package Amenity Routes
+    Route::get('/package-amenity/{id}',[AdminPackageController::class, 'packageAmenities'])->name('admin.package_amenity');
+    Route::post('/package-amenity/{id}',[AdminPackageController::class, 'packageAmenitiesStore'])->name('admin.package_amenity.store');
+    Route::get('/package-amenity/delete/{id}',[AdminPackageController::class, 'packageAmenitiesDelete'])->name('admin.package_amenity.delete');
+
+
     // Amenities Routes
     Route::get('/amenity',[AdminAmenityController::class, 'index'])->name('admin.amenity.index');
     Route::get('/amenity/create',[AdminAmenityController::class, 'create'])->name('admin.amenity.create');
