@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAmenityController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminBlogCategoryController;
 use App\Http\Controllers\Admin\AdminCounterItemController;
@@ -29,6 +30,7 @@ Route::get('/post/{slug}', [FrontendController::class, 'post'])->name('post');
 Route::get('/category/{slug}',[FrontendController::class,'category'])->name('category');
 Route::get('/destinations', [FrontendController::class, 'destinations'])->name('destinations');
 Route::get('/destination/{slug}', [FrontendController::class, 'destination'])->name('destination');
+Route::get('/package/{slug}', [FrontendController::class, 'package'])->name('package');
 
 
 //User Authentication Routes
@@ -148,6 +150,13 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::post('/package/edit/{id}',[AdminPackageController::class, 'update'])->name('admin.package.update');
     Route::get('/package/delete/{id}',[AdminPackageController::class, 'delete'])->name('admin.package.delete');
 
+    // Amenities Routes
+    Route::get('/amenity',[AdminAmenityController::class, 'index'])->name('admin.amenity.index');
+    Route::get('/amenity/create',[AdminAmenityController::class, 'create'])->name('admin.amenity.create');
+    Route::post('/amenity/create',[AdminAmenityController::class, 'store'])->name('admin.amenity.store');
+    Route::get('/amenity/edit/{id}',[AdminAmenityController::class, 'edit'])->name('admin.amenity.edit');
+    Route::post('/amenity/edit/{id}',[AdminAmenityController::class, 'update'])->name('admin.amenity.update');
+    Route::get('/amenity/delete/{id}',[AdminAmenityController::class, 'delete'])->name('admin.amenity.delete');
 
 });
 

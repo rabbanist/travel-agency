@@ -8,6 +8,7 @@ use App\Models\BlogCategory;
 use App\Models\CounterItem;
 use App\Models\Faq;
 use App\Models\Feature;
+use App\Models\Package;
 use App\Models\Post;
 use App\Models\Slider;
 use App\Models\TeamMember;
@@ -92,6 +93,12 @@ class FrontendController extends Controller
         $category = BlogCategory::where('slug',$slug)->first();
         $posts = Post::with('blog_category')->where('blog_category_id',$category->id)->orderBy('id','desc')->paginate(9);
         return view('front.pages.category', compact('posts', 'category'));
+    }
+
+    public function package($slug)
+    {
+        $package = Package::with('destination')->where('slug',$slug)->first();
+        return view('front.pages.package', compact('package'));
     }
 
     public function registration(){
