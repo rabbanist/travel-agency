@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Amenity;
+use App\Models\DestinationPhoto;
 use App\Models\PackageAmenity;
 use App\Models\PackageItinerary;
+use App\Models\PackagePhoto;
 use Illuminate\Http\Request;
 use App\Models\Package;
 use App\Models\Destination;
@@ -199,12 +201,53 @@ class AdminPackageController extends Controller
         return redirect()->route('admin.package_itinerary',$id)->with('success','Itinerary is Added Successfully');
     }
 
-
     //package itinerary delete
     public function packageItinerariesDelete($id)
     {
         $obj = PackageItinerary::where('id',$id)->first();
         $obj->delete();
        return redirect()->back()->with('success','Itinerary is Deleted Successfully');
+    }
+
+//    Package Photos Start
+    public function packagePhotos($id)
+    {
+        $package = Package::where('id',$id)->first();
+        $packagePhotos = PackagePhoto::where('package_id',$id)->get();
+        return view('admin.pages.package.package_photo',compact('package','packagePhotos'));
+    }
+
+//    Package Photos Store
+    public function packagePhotosStore(Request $request, $id)
+    {
+        $request->validate([
+            'photo' => 'required',
+            'photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if($request->hasfile('photo'))
+        {
+            foreach($request->file('photo') as $image)
+            {
+                $name = 'package_photo_'.time().rand(1,100).'.'.$image->extension();
+                $image->move(public_path().'/uploads/', $name);
+                $photos[] = $name;
+            }
+        }
+        foreach ($photos as $photo) {
+            $obj = new PackagePhoto();
+            $obj->package_id = $id;
+            $obj->photo = $photo;
+            $obj->save();
+        }
+        return redirect()->back()->with('success','Photos are Inserted Successfully');
+    }
+
+    public function packagePhotosDelete($id)
+    {
+        $photo = PackagePhoto::where('id',$id)->first();
+        unlink(public_path('uploads/'.$photo->photo));
+        $photo->delete();
+        return redirect()->back()->with('success','Photo is Deleted Successfully');
     }
 }

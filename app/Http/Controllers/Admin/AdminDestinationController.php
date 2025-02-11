@@ -127,9 +127,6 @@ class AdminDestinationController extends Controller
         return redirect()->back()->with('success','Photo is Inserted Successfully');
     }
 
-
-
-
     public function destinationPhotosDelete($id)
     {
         $destination_photo = DestinationPhoto::where('id',$id)->first();

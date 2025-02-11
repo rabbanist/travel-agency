@@ -160,6 +160,11 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::post('/package-itinerary/{id}',[AdminPackageController::class, 'packageItinerariesStore'])->name('admin.package_itinerary.store');
     Route::get('/package-itinerary/delete/{id}',[AdminPackageController::class, 'packageItinerariesDelete'])->name('admin.package_itinerary.delete');
 
+//    Package Photos Routes
+    Route::get('/package-photo/{id}',[AdminPackageController::class, 'packagePhotos'])->name('admin.package_photo');
+    Route::post('/package-photo/{id}',[AdminPackageController::class, 'packagePhotosStore'])->name('admin.package_photo.store');
+    Route::get('/package-photo/delete/{id}',[AdminPackageController::class, 'packagePhotosDelete'])->name('admin.package_photo.delete');
+
 
     // Amenities Routes
     Route::get('/amenity',[AdminAmenityController::class, 'index'])->name('admin.amenity.index');

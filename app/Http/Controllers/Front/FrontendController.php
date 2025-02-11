@@ -11,6 +11,7 @@ use App\Models\Feature;
 use App\Models\Package;
 use App\Models\PackageAmenity;
 use App\Models\PackageItinerary;
+use App\Models\PackagePhoto;
 use App\Models\Post;
 use App\Models\Slider;
 use App\Models\TeamMember;
@@ -112,8 +113,9 @@ class FrontendController extends Controller
 
         $package_iteneraries = PackageItinerary::where('package_id',$package->id)->get();
 
+        $package_photos = PackagePhoto::where('package_id',$package->id)->get();
 
-        return view('front.pages.package', compact('package', 'package_amenities_include', 'package_amenities_exclude','package_iteneraries'));
+        return view('front.pages.package', compact('package', 'package_amenities_include', 'package_amenities_exclude','package_iteneraries','package_photos'));
     }
 
     public function registration(){

@@ -12,4 +12,12 @@ class Package extends Model
         return $this->belongsTo(Destination::class);
     }
 
+    public function package_itenaries(){
+        return $this->hasMany(PackageItinerary::class);
+    }
+
+    public function package_photos(){
+        return $this->hasMany(PackagePhoto::class);
+    }
+
 }
