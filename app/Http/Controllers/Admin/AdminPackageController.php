@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Amenity;
 use App\Models\PackageAmenity;
+use App\Models\PackageItinerary;
 use Illuminate\Http\Request;
 use App\Models\Package;
 use App\Models\Destination;
@@ -58,13 +59,17 @@ class AdminPackageController extends Controller
         return redirect()->route('admin.package.index')->with('success','Package is Created Successfully');
     }
 
+
+    //package edit start
     public function edit($id)
     {
         $package = Package::where('id',$id)->first();
         $destinations = Destination::orderBy('name','asc')->get();
         return view('admin.pages.package.edit',compact('package','destinations'));
     }
+    //package edit end
 
+    //package update start
     public function update(Request $request, $id)
     {
         $package = Package::where('id',$id)->first();
@@ -111,6 +116,8 @@ class AdminPackageController extends Controller
         return redirect()->route('admin.package.index')->with('success','Package is Updated Successfully');
     }
 
+    //package update end
+
     public function delete($id)
     {
 
@@ -122,9 +129,7 @@ class AdminPackageController extends Controller
     }
 
 
-
     //package amenities start
-
     public function packageAmenities($id)
     {
         $package = Package::where('id',$id)->first();
@@ -167,7 +172,39 @@ class AdminPackageController extends Controller
         $package_amenity->delete();
         return redirect()->route('admin.package_amenity',$package_id)->with('success','Amenity is Deleted Successfully');
     }
+    //package amenities end
 
 
+//    package itinerary start
+    public function packageItineraries($id)
+    {
+        $package = Package::where('id',$id)->first();
+        $packageItineraries = PackageItinerary::where('package_id',$id)->get();
+        return view('admin.pages.package.package_itinerary',compact('package','packageItineraries',));
+    }
 
+    public function packageItinerariesStore(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        $obj = new PackageItinerary();
+        $obj->package_id = $id;
+        $obj->name = $request->name;
+        $obj->description = $request->description;
+        $obj->save();
+
+        return redirect()->route('admin.package_itinerary',$id)->with('success','Itinerary is Added Successfully');
+    }
+
+
+    //package itinerary delete
+    public function packageItinerariesDelete($id)
+    {
+        $obj = PackageItinerary::where('id',$id)->first();
+        $obj->delete();
+       return redirect()->back()->with('success','Itinerary is Deleted Successfully');
+    }
 }

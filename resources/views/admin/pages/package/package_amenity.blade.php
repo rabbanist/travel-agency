@@ -9,7 +9,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header justify-content-between">
-                <h1>Videos of {{ $package->name }}</h1>
+                <h1>Amenity of {{ $package->name }}</h1>
                 <div class="ml-auto">
                     <a href="{{ route('admin.package.index') }}" class="btn btn-primary"><i class="fas fa-plus"></i> back to previous</a>
                 </div>

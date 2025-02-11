@@ -10,7 +10,7 @@
             <div class="section-header justify-content-between">
                 <h1>Posts</h1>
                 <div class="ml-auto">
-                    <a href="{{ route('admin.post.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add New</a>
+                    <a href="{{ route('admin.blog_post.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Add New</a>
                 </div>
             </div>
             <div class="section-body">
@@ -41,8 +41,8 @@
                                                     {{ $post->blog_category->name }}
                                                 </td>
                                                 <td class="pt_10 pb_10">
-                                                    <a href="{{ route('admin.post.edit',$post->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                                    <a href="{{ route('admin.post.delete',$post->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');"><i class="fas fa-trash"></i></a>
+                                                    <a href="{{ route('admin.blog_post.edit',$post->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{ route('admin.blog_post.delete',$post->id) }}" class="btn btn-danger" onClick="return confirm('Are you sure?');"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>
                                         @endforeach

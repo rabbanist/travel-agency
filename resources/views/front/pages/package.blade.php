@@ -46,8 +46,7 @@
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="tab-2" data-bs-toggle="tab" data-bs-target="#tab-2-pane"
-                                        type="button" role="tab" aria-controls="tab-2-pane" aria-selected="false">Tour
-                                    Plan
+                                        type="button" role="tab" aria-controls="tab-2-pane" aria-selected="false">Itineraries
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
@@ -143,39 +142,19 @@
                             <div class="tab-pane fade" id="tab-2-pane" role="tabpanel" aria-labelledby="tab-2"
                                  tabindex="0">
                                 <!-- Tour Plan -->
-                                <h2 class="mt_30">Tour Plan</h2>
+                                <h2 class="mt_30">Itineraries</h2>
                                 <div class="tour-plan">
 
                                     <div class="table-responsive">
                                         <table class="table table-bordered">
+                                            @foreach( $package_iteneraries as $item)
                                             <tr>
-                                                <td><b>Day 1</b></td>
+                                                <td><b>{{$item->name}}</b></td>
                                                 <td>
-                                                    <b>Morning:</b><br>
-                                                    1. Arrive at Cairns or Port Douglas and check into your hotel.<br>
-                                                    2. Welcome meeting with the tour guide and fellow travelers.<br>
-
-                                                    <b>Afternoon</b><br>
-                                                    1. Lunch at a local restaurant.<br>
-                                                    2. Visit the Cairns Aquarium to get an introduction to the marine
-                                                    life of the Great Barrier Reef.<br>
-
-                                                    <b>Evening</b><br>
-                                                    1. Free time to explore the local area.<br>
-                                                    2. Welcome dinner at the hotel, with an overview of the tour
-                                                    itinerary and reef conservation briefing.<br>
+                                                    {!! $item->description !!}
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td><b>Day 2</b></td>
-                                                <td>
-                                                    <b>Morning: </b><br>
-                                                    1. Early breakfast at the hotel.<br>
-                                                    2. Depart for the Great Barrier Reef on a comfortable catamaran.<br>
-                                                    3. Safety briefing and equipment fitting for snorkeling and
-                                                    diving.<br>
-                                                </td>
-                                            </tr>
+                                            @endforeach
                                         </table>
                                     </div>
                                 </div>

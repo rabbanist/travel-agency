@@ -108,6 +108,8 @@ class AdminDestinationController extends Controller
         return view('admin.pages.destination.destination_photos',compact('destination','destination_photos'));
     }
 
+
+    //Destination Photos Store
     public function destinationPhotosStore(Request $request, $id)
     {
         $request->validate([
@@ -124,6 +126,9 @@ class AdminDestinationController extends Controller
 
         return redirect()->back()->with('success','Photo is Inserted Successfully');
     }
+
+
+
 
     public function destinationPhotosDelete($id)
     {

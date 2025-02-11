@@ -115,13 +115,13 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::post('/blog-category/edit/{id}',[AdminBlogCategoryController::class, 'update'])->name('admin.blog_category.update');
     Route::get('/blog-category/delete/{id}',[AdminBlogCategoryController::class, 'delete'])->name('admin.blog_category.delete');
 
-    //Post Routes
-    Route::get('/post',[AdminPostController::class, 'index'])->name('admin.post.index');
-    Route::get('/post/create',[AdminPostController::class, 'create'])->name('admin.post.create');
-    Route::post('/post/create',[AdminPostController::class, 'store'])->name('admin.post.store');
-    Route::get('/post/edit/{id}',[AdminPostController::class, 'edit'])->name('admin.post.edit');
-    Route::post('/post/edit/{id}',[AdminPostController::class, 'update'])->name('admin.post.update');
-    Route::get('/post/delete/{id}',[AdminPostController::class, 'delete'])->name('admin.post.delete');
+    //Blog Post Routes
+    Route::get('/blog-post',[AdminPostController::class, 'index'])->name('admin.blog_post.index');
+    Route::get('/blog-post/create',[AdminPostController::class, 'create'])->name('admin.blog_post.create');
+    Route::post('/blog-post/create',[AdminPostController::class, 'store'])->name('admin.blog_post.store');
+    Route::get('/blog-post/edit/{id}',[AdminPostController::class, 'edit'])->name('admin.blog_post.edit');
+    Route::post('/blog-post/edit/{id}',[AdminPostController::class, 'update'])->name('admin.blog_post.update');
+    Route::get('/blog-post/delete/{id}',[AdminPostController::class, 'delete'])->name('admin.blog_post.delete');
 
 
     //Destination Routes
@@ -154,6 +154,11 @@ Route::prefix('admin')->middleware('admin')->group( function (){
     Route::get('/package-amenity/{id}',[AdminPackageController::class, 'packageAmenities'])->name('admin.package_amenity');
     Route::post('/package-amenity/{id}',[AdminPackageController::class, 'packageAmenitiesStore'])->name('admin.package_amenity.store');
     Route::get('/package-amenity/delete/{id}',[AdminPackageController::class, 'packageAmenitiesDelete'])->name('admin.package_amenity.delete');
+
+    //Package Itinerary Routes
+    Route::get('/package-itinerary/{id}',[AdminPackageController::class, 'packageItineraries'])->name('admin.package_itinerary');
+    Route::post('/package-itinerary/{id}',[AdminPackageController::class, 'packageItinerariesStore'])->name('admin.package_itinerary.store');
+    Route::get('/package-itinerary/delete/{id}',[AdminPackageController::class, 'packageItinerariesDelete'])->name('admin.package_itinerary.delete');
 
 
     // Amenities Routes

@@ -9,9 +9,12 @@ use App\Models\CounterItem;
 use App\Models\Faq;
 use App\Models\Feature;
 use App\Models\Package;
+use App\Models\PackageAmenity;
+use App\Models\PackageItinerary;
 use App\Models\Post;
 use App\Models\Slider;
 use App\Models\TeamMember;
+use App\Models\Testimonial;
 use App\Models\User;
 use App\Models\Destination;
 use App\Models\DestinationPhoto;
@@ -29,9 +32,10 @@ class FrontendController extends Controller
         $welcome_item = WelcomeItem::where('id', 1)->first();
         $features = Feature::get();
         $team_members = TeamMember::get();
+        $testimonials = Testimonial::get();
         $posts = Post::with('blog_category')->orderBy('id','desc')->get()->take(3);
         $destinations = Destination::orderBy('view_count','desc')->get()->take(8);
-        return view('front.pages.home', compact('sliders','welcome_item','features', 'team_members','posts','destinations'));
+        return view('front.pages.home', compact('sliders','welcome_item','features','testimonials', 'team_members','posts','destinations'));
     }
 
     public function about(){
@@ -98,7 +102,18 @@ class FrontendController extends Controller
     public function package($slug)
     {
         $package = Package::with('destination')->where('slug',$slug)->first();
-        return view('front.pages.package', compact('package'));
+        $package_amenities_include = PackageAmenity::with('amenity')
+            ->where('package_id',$package->id)
+            ->where('type','Include')->get();
+
+        $package_amenities_exclude = PackageAmenity::with('amenity')
+            ->where('package_id',$package->id)
+            ->where('type','Exclude')->get();
+
+        $package_iteneraries = PackageItinerary::where('package_id',$package->id)->get();
+
+
+        return view('front.pages.package', compact('package', 'package_amenities_include', 'package_amenities_exclude','package_iteneraries'));
     }
 
     public function registration(){

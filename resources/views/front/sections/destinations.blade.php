@@ -11,13 +11,11 @@
             </div>
         </div>
         <div class="row">
-
             @foreach($destinations as $destination)
-
             <div class="col-lg-3 col-md-6">
                 <div class="item pb_25">
                     <div class="photo">
-                        <a href="destination.html"><img src="{{ ('uploads/'.$destination->featured_image ) }}" alt=""></a>
+                        <a href="{{ route('destination',$destination->slug) }}"><img src="{{ ('uploads/'.$destination->featured_image ) }}" alt=""></a>
                     </div>
                     <div class="text">
                         <h2>

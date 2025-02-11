@@ -10,7 +10,7 @@
             <div class="section-header justify-content-between">
                 <h1>Create Post</h1>
                 <div class="ml-auto">
-                    <a href="{{ route('admin.post.index') }}" class="btn btn-primary"><i class="fas fa-plus"></i> View All</a>
+                    <a href="{{ route('admin.blog_post.index') }}" class="btn btn-primary"><i class="fas fa-plus"></i> View All</a>
                 </div>
             </div>
             <div class="section-body">
@@ -18,7 +18,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.post.store') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('admin.blog_post.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-3">
                                         <label class="form-label">Photo *</label>
